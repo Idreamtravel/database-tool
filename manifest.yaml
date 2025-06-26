@@ -1,7 +1,7 @@
-version: 0.0.6
+version: 0.0.1
 type: plugin
-author: hjlarry
-name: database
+author: Idreamtravel
+name: database-tool
 label:
   en_US: database
   ja_JP: database

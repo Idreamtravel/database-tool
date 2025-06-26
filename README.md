@@ -1,11 +1,8 @@
-## database
+## database-tool
 
-**Author:** hjlarry  
-**Version:** 0.0.5  
+**Author:** Idreamtravel  
+**Version:** 0.0.1
 **Type:** tool   
-**Repo:** [https://github.com/hjlarry/dify-plugin-database](https://github.com/hjlarry/dify-plugin-database)  
-**Feature Request:** [issues](https://github.com/hjlarry/dify-plugin-database/issues)  
-**中文文档** [README_CN.md](https://github.com/hjlarry/dify-plugin-database/blob/main/README_CN.md)
 
 ### Be Carefull!
 **The sql_execute tool can run any SQL query; for enhanced security, always use a read-only database account.**
@@ -54,38 +51,3 @@ example url request format:
 ```shell
 curl -X POST 'https://daemon-plugin.dify.dev/o3wvwZfYFLU5iGopr5CxYmGaM5mWV7xf/sql' -H 'Content-Type: application/json' -d '{"query":"select * from test", "format": "md"}'
 ```
-
-
-### Changelog
-
-#### 0.0.6
-1. support get more table info of `get table schema` tool
-2. support special `schema` of `get table schema` tool
-
-#### 0.0.5
-1. support `with` in sql query
-2. fix `text2sql` generate double quotes sql string
-3. fix  `too many clients already`
-4. add connect option of sqlalchemy
-5. change the `db_uri` of authorization to an optional field
-6. add a `Get Table Schema` to directly response the schema of tables
-7. add a `CSV Query` tool to execute a sql query from a csv file
-8. fix `oracle` authorization can't run `select 1`
-
-#### 0.0.4
-1. support `sqlserver`, `oracle` connection
-2. change `db_url` to a llm format, so that user can use a environment variable of workflow to set the database uri
-3. fix in a agent app, `sql_execute` tool only response the first result
-4. migrate the table schema info of the `text2sql` tool to a user prompt, to prevent system prompt too long then response nothing
-
-#### 0.0.3
-1. add `cryptography` to requirements.txt to support mysql 8.1 sha256 link
-2. remove database uri setting of the endpoint
-3. add a `db_uri` to support link to multiple databases
-4. change the `output` of sql_execute tool to a form format
-5. change the `tables` of text2sql tool to a llm format
-6. fix sql query being converted to lowercase [issue](https://github.com/hjlarry/dify-plugin-database/issues/2)
-
-
-### Contact
-![1](_assets/contact.jpg)

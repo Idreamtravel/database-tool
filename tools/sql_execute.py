@@ -62,16 +62,23 @@ class SQLExecuteTool(Tool):
                     raise ValueError(f"Unsupported format: {format}")
             else:
                 with db.get_connection() as conn:
-                    trans = conn._conn.begin()
+                    # 判断是否为查询
+                    isQuery = re.match(r'^\s*(SELECT|WITH)\s+', query, re.IGNORECASE)
+                    trans = None
+                    # 如果不是查询，则需要开启事务  
+                    if not isQuery:
+                        trans = conn._conn.begin()
                     try:
                         result = conn._conn.execute(text(query))
                         affected_rows = result.rowcount
-                        trans.commit()
+                        if not isQuery and trans:
+                            trans.commit()
                         yield self.create_text_message(
                             f"Query executed successfully. Affected rows: {affected_rows}"
                         )
                     except Exception as e:
-                        trans.rollback()
+                        if trans:
+                            trans.rollback()
                         yield self.create_text_message(f"Error: {str(e)}")
         finally:
             db.close()

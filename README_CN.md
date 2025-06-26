@@ -1,11 +1,8 @@
 ## 数据库
 
-**作者：** hjlarry  
-**版本：** 0.0.6  
+**作者：** Idreamtravel  
+**版本：** 0.0.1
 **类型：** 工具  
-**仓库：** [https://github.com/hjlarry/dify-plugin-database](https://github.com/hjlarry/dify-plugin-database)  
-**功能请求：** [issues](https://github.com/hjlarry/dify-plugin-database/issues)  
-**FAQ：** [FAQ](FAQ.md)  
 
 ### 请注意！
 **`sql_execute` 工具可以运行任何 SQL 查询；为了增强安全性，请始终使用只读数据库账户。**
@@ -54,36 +51,3 @@ URL 请求格式示例：
 ```shell
 curl -X POST 'https://daemon-plugin.dify.dev/o3wvwZfYFLU5iGopr5CxYmGaM5mWV7xf/sql' -H 'Content-Type: application/json' -d '{"query":"select * from test", "format": "md"}'
 ```
-
-### 更新日志
-
-#### 0.0.6
-1. 支持在 `get table schema` 工具中获取更多信息，例如表和字段的注释、外键关联索引等
-2. support special `schema` of `get table schema` tool
-
-#### 0.0.5
-1. 支持 SQL 查询中的 `with` 语句
-2. 修复 `text2sql` 生成带双引号的 SQL 字符串的问题
-3. 修复 `too many clients already` (客户端连接过多) 的问题
-4. 添加 SQLAlchemy 的连接选项
-5. 将授权中的 `db_uri` 更改为可选字段
-6. 添加 `获取表模式` (Get Table Schema) 工具以直接响应表的模式
-7. 添加 `CSV 查询` (CSV Query) 工具以对 CSV 文件执行 SQL 查询
-
-#### 0.0.4
-1. 支持 `sqlserver`、`oracle` 连接
-2. 将 `db_url` 更改为 LLM 格式，以便用户可以使用工作流的环境变量来设置数据库 URI
-3. 修复在 Agent 应用中，`sql_execute` 工具仅响应第一个结果的问题
-4. 将 `text2sql` 工具的表模式信息迁移到用户提示词中，以防止系统提示词过长导致无响应
-
-#### 0.0.3
-1. 在 requirements.txt 中添加 `cryptography` 以支持 MySQL 8.1 的 sha256 连接
-2. 移除端点（endpoint）的数据库 URI 设置
-3. 添加 `db_uri` 以支持连接到多个数据库
-4. 将 `sql_execute` 工具的 `output` 更改为表单（form）格式
-5. 将 `text2sql` 工具的 `tables` 更改为 LLM 格式
-6. 修复 SQL 查询被转换为小写的问题 [issue](https://github.com/hjlarry/dify-plugin-database/issues/2)
-
-
-### 加群
-![1](_assets/contact.jpg)
